@@ -26,9 +26,7 @@ const userSchema = new mongoose.Schema({
     lowercase: true,
     trim: true
   },
-  phone: {
-    type: string
-  }
+  phone: String
 },
   { timestamps: true });
 
