@@ -17,5 +17,5 @@ const rsvpSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-const RSVP = mongoose.model(RSVP, rsvpSchema);
+const RSVP = mongoose.model("RSVP", rsvpSchema);
 module.exports = RSVP;
