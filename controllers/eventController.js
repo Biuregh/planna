@@ -8,7 +8,7 @@ const Event = require("../models/event");
 // Index  - Show ll events
 router.get("/", async (req, res) => {
     try {
-        const events = await Event.find({ userId: req.session.userId });
+        const events = await Event.find({ userId: req.session.user._id });
         res.render("events/index.ejs", { events });
     } catch (err) {
         res.status(500).send("Error loading events!");
@@ -17,30 +17,30 @@ router.get("/", async (req, res) => {
 
 //New - Show new events form
 router.get("/new", (req, res) => {
-    res.render("events/new");
+    res.render("events/new.ejs");
 });
 
 //Delete - Delete existing product
-router.delete("/:id", async(req, res)=>{
-    try{
-        await Event.findByIdAndDelete(req.param.id);
-    res.redirect("/events");
-}catch(err){
-    res.status(500).send("Error deleting event!");
-}
+router.delete("/:id", async (req, res) => {
+    try {
+        await Event.findByIdAndDelete(req.params.id);
+        res.redirect("/events");
+    } catch (err) {
+        res.status(500).send("Error deleting event!");
+    }
 });
 
 //Update - Update existing event
 router.put("/:id", async (req, res) => {
     try {
         const { name, date, location, notes } = req.body;
-        await Event.findByIdAndUpdate(req.param.id, {
+        await Event.findByIdAndUpdate(req.params.id, {
             name,
             date,
             location,
             notes,
         });
-        res.redirect(`/events/${req.prams.id}`);
+        res.redirect(`/events`);
     } catch (err) {
         res.status(500).send("Error on updating event!");
     }
@@ -48,7 +48,6 @@ router.put("/:id", async (req, res) => {
 
 //Create - Creation of new event
 router.post("/", async (req, res) => {
-    console.log("========> ", req)
     try {
         const { name, date, location, notes } = req.body;
         await Event.create({
@@ -56,7 +55,7 @@ router.post("/", async (req, res) => {
             date,
             location,
             notes,
-            userId: req.session.userId
+            userId: req.session.user._id
         });
         res.redirect("/events");
     } catch (err) {
@@ -68,7 +67,7 @@ router.post("/", async (req, res) => {
 router.get("/:id/edit", async (req, res) => {
     try {
         const event = await Event.findById(req.params.id);
-        res.render("events/edit", { event });
+        res.render("events/edit.ejs", { event });
     } catch (err) {
         res.status(500).send("Error loading edit form");
     }
@@ -78,10 +77,10 @@ router.get("/:id/edit", async (req, res) => {
 router.get("/:id", async (req, res) => {
     try {
         const event = await Event.findById(req.params.id);
-        res.render("events/show", { event });
+        res.render("events/show.ejs", { event });
     } catch (err) {
         res.status(500).send("Error showing single event!");
     }
 });
 
-module.export = router;
+module.exports = router;

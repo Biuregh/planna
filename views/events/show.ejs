@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= event.name %>
+    </title>
+</head>
+
+<body>
+    <section class="event-show">
+        <h1 class="event-title">
+            <%= event.name %>
+        </h1>
+
+        <p class="event-field"><strong>Date:</strong>
+            <%= new Date(event.date).toLocaleDateString() %>
+        </p>
+        <p class="event-field"><strong>Location:</strong>
+            <%= event.location %>
+        </p>
+        <p class="event-field"><strong>Notes:</strong>
+            <%= event.notes %>
+        </p>
+
+        <div class="event-actions">
+            <a class="btn btn-edit" href="/events/<%= event._id %>/edit">Edit</a>
+            <form class="event-delete-form" action="/events/<%= event._id %>?_method=DELETE" method="POST">
+                <button class="btn btn-delete" type="submit">Delete</button>
+            </form>
+        </div>
+
+        <a class="btn btn-back" href="/events">Back to Events</a>
+    </section>
+</body>
+
+</html>
