@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Guest</title>
+</head>
+
+<body>
+    <h1 class="page-title" id="guest-new-title">Add New Guest</h1>
+    <form action="/events/<%= eventId %>/guests" method="POST" class="guest-form" id="guest-form-new">
+        <input type="hidden" name="eventId" value="<%= eventId %>">
+
+        <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" id="guest-firstName" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" id="guest-lastName" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="guest-email">
+
+        <label for="phone">Phone:</label>
+        <input type="tel" name="phone" id="guest-phone">
+
+        <label for="group">Group:</label>
+        <input type="text" name="group" id="guest-group">
+
+        <label for="note">Note:</label>
+        <textarea name="note" id="guest-note"></textarea>
+
+        <button type="submit" class="btn submit-btn">Add Guest</button>
+    </form>
+
+</body>
+
+</html>

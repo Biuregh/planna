@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const Event = require("../models/event");
+const Guest = require("../models/guest");
+
 
 //I.N.D.U.C.E.S
 
@@ -20,7 +22,7 @@ router.get("/new", (req, res) => {
     res.render("events/new.ejs");
 });
 
-//Delete - Delete existing product
+//Delete - Delete existing event
 router.delete("/:id", async (req, res) => {
     try {
         await Event.findByIdAndDelete(req.params.id);
@@ -77,7 +79,11 @@ router.get("/:id/edit", async (req, res) => {
 router.get("/:id", async (req, res) => {
     try {
         const event = await Event.findById(req.params.id);
-        res.render("events/show.ejs", { event });
+        if (!event) {
+            return res.status(404).send("Event not found");
+        }
+        const guests = await Guest.find({ eventId: event._id });
+        res.render("events/show.ejs", { event, guests });
     } catch (err) {
         res.status(500).send("Error showing single event!");
     }

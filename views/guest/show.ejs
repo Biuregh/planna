@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= guest.firstName %>
+        <%= guest.lastName %>
+    </title>
+</head>
+
+<body>
+    <h1 class="page-title" id="guest-show-title">Guest Details</h1>
+    <div class="guest-details">
+        <p class="guest-name"><strong>Name:</strong>
+            <%= guest.firstName %>
+                <%= guest.lastName %>
+        </p>
+        <p class="guest-email"><strong>Email:</strong>
+            <%= guest.email %>
+        </p>
+        <p class="guest-phone"><strong>Phone:</strong>
+            <%= guest.phone %>
+        </p>
+        <p class="guest-group"><strong>Group:</strong>
+            <%= guest.group %>
+        </p>
+        <p class="guest-note"><strong>Note:</strong>
+            <%= guest.note %>
+        </p>
+
+        <a href="/guest/<%= guest._id %>/edit" class="btn edit-btn">Edit</a>
+        <form action="/guest/<%= guest._id %>?_method=DELETE" method="POST" class="delete-form">
+            <button type="submit" class="btn delete-btn">Delete</button>
+        </form>
+    </div>
+
+</body>
+
+</html>

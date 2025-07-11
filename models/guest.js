@@ -1,16 +1,16 @@
-const mongoose = require("mongoos");
+const mongoose = require("mongoose");
 
 const guestSchema = new mongoose.Schema({
-    userId: [{
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User", 
         required: true
-    }],
-    eventId: [{
+    },
+    eventId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Event",
         required:true
-    }],
+    },
     firstName: {
         type: String,
         required: true
@@ -25,7 +25,7 @@ const guestSchema = new mongoose.Schema({
         trim: true
     },
     phone: {
-        type: string
+        type: String
     },
     group: {
         type: String

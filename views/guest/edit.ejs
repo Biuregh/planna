@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edt Guest</title>
+</head>
+
+<body>
+    <h1 class="page-title" id="guest-edit-title">Edit Guest</h1>
+    <form action="/guest/<%= guest._id %>?_method=PUT" method="POST" class="guest-form" id="guest-form-edit">
+
+        <label for="firstName">First Name:</label>
+        <input type="text" name="firstName" id="guest-firstName" value="<%= guest.firstName %>" required>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="lastName" id="guest-lastName" value="<%= guest.lastName %>" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="guest-email" value="<%= guest.email %>">
+
+        <label for="phone">Phone:</label>
+        <input type="tel" name="phone" id="guest-phone" value="<%= guest.phone %>">
+
+        <label for="group">Group:</label>
+        <input type="text" name="group" id="guest-group" value="<%= guest.group %>">
+
+        <label for="note">Note:</label>
+        <textarea name="note" id="guest-note"><%= guest.note %></textarea>
+
+        <button type="submit" class="btn submit-btn">Update Guest</button>
+    </form>
+
+</body>
+
+</html>
