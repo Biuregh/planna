@@ -10,32 +10,35 @@
 </head>
 
 <body>
-    <section class="event-show">
-        <h1 class="event-title">
-            <%= event.name %>
-        </h1>
-
-        <p class="event-field"><strong>Date:</strong>
-            <%= new Date(event.date).toLocaleDateString() %>
-        </p>
-        <p class="event-field"><strong>Location:</strong>
-            <%= event.location %>
-        </p>
-        <p class="event-field"><strong>Notes:</strong>
-            <%= event.notes %>
-        </p>
-
-        <div class="event-actions">
-            <a class="btn btn-edit" href="/events/<%= event._id %>/edit">Edit</a>
-            <form class="event-delete-form" action="/events/<%= event._id %>?_method=DELETE" method="POST">
-                <button class="btn btn-delete" type="submit">Delete</button>
-            </form>
-        </div>
-        </br>
-        <a href="/events/<%= event._id %>/guests" class="btn">View Guests</a>
-        <a href="/events/<%= event._id %>/guests/new" class="btn">Add Guest</a>
-        <a class="btn btn-back" href="/events">Back to Events</a>
-    </section>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="event-show">
+                <h1 class="event-title">
+                    <%= event.name %>
+                </h1>
+                <p class="event-field"><strong>Date:</strong>
+                    <%= new Date(event.date).toLocaleDateString() %>
+                </p>
+                <p class="event-field"><strong>Location:</strong>
+                    <%= event.location %>
+                </p>
+                <p class="event-field"><strong>Notes:</strong>
+                    <%= event.notes %>
+                </p>
+                <div class="event-actions">
+                    <a class="btn btn-edit" href="/events/<%= event._id %>/edit">Edit</a>
+                    <form class="event-delete-form" action="/events/<%= event._id %>?_method=DELETE" method="POST">
+                        <button class="btn btn-delete" type="submit">Delete</button>
+                    </form>
+                </div>
+                </br>
+                <a href="/events/<%= event._id %>/guests" class="btn">View Guests</a>
+                <a href="/events/<%= event._id %>/guests/new" class="btn">Add Guest</a>
+                <a class="btn btn-back" href="/events">Back to Events</a>
+            </section>
+        </main>
+    </div>
 </body>
 
 </html>

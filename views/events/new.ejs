@@ -8,27 +8,31 @@
 </head>
 
 <body>
-    <section class="event-new">
-        <h1 class="heading">Create New Event</h1>
-        <form class="event-form" action="/events" method="POST">
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="event-new">
+                <h1 class="heading">Create New Event</h1>
+                <form class="event-form" action="/events" method="POST">
 
-            <label class="form-label">Name:</label>
-            <input class="form-input" name="name" required />
+                    <label class="form-label">Name:</label>
+                    <input class="form-input" name="name" required />
 
-            <label class="form-label">Date:</label>
-            <input class="form-input" type="date" name="date" required />
+                    <label class="form-label">Date:</label>
+                    <input class="form-input" type="date" name="date" required />
 
-            <label class="form-label">Location:</label>
-            <input class="form-input" name="location" />
+                    <label class="form-label">Location:</label>
+                    <input class="form-input" name="location" />
 
-            <label class="form-label">Notes:</label>
-            <textarea class="form-textarea" name="notes"></textarea>
+                    <label class="form-label">Notes:</label>
+                    <textarea class="form-textarea" name="notes"></textarea>
 
-            <button class="btn btn-submit" type="submit">Create Event</button>
-        </form>
-        <a class="btn btn-back" href="/events">Back to Events</a>
-    </section>
-
+                    <button class="btn btn-submit" type="submit">Create Event</button>
+                </form>
+                <a class="btn btn-back" href="/events">Back to Events</a>
+            </section>
+        </main>
+    </div>
 </body>
 
 </html>

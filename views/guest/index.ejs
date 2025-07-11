@@ -8,32 +8,40 @@
 </head>
 
 <body>
-    <h1 class="page-title" id="guest-index-title">
-        Guest List for <%=event.name%>
-    </h1>
-    <div class="guest-grid" id="guest-list">
-        <% guests.forEach(guest=> { %>
-            <div class="guest-card">
-                <h2 class="guest-name">
-                    <%= guest.firstName %>
-                        <%= guest.lastName %>
-                </h2>
-                <p class="guest-email">Email: <%= guest.email %>
-                </p>
-                <p class="guest-phone">Phone: <%= guest.phone %>
-                </p>
-                <p class="guest-group">Group: <%= guest.group %>
-                </p>
-                <a href="/guest/<%= guest._id %>" class="btn view-btn">View</a>
-                <a href="/guest/<%= guest._id %>/edit" class="btn edit-btn">Edit</a>
-                <form action="/guest/<%= guest._id %>?_method=DELETE" method="POST" class="delete-form">
-                    <button type="submit" class="btn delete-btn">Delete</button>
-                </form>
-            </div>
-            <% }) %>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="guest-index">
+                <h1 class="page-title" id="guest-index-title">
+                    Guest List for <%=event.name%>
+                </h1>
+                <div class="guest-grid" id="guest-list">
+                    <% guests.forEach(guest=> { %>
+                        <div class="guest-card">
+                            <h2 class="guest-name">
+                                <%= guest.firstName %>
+                                <%= guest.lastName %>
+                            </h2>
+                            <p class="guest-email">Email: <%= guest.email %>
+                            </p>
+                            <p class="guest-phone">Phone: <%= guest.phone %>
+                            </p>
+                            <p class="guest-group">Group: <%= guest.group %>
+                            </p>
+                            <a href="/guest/<%= guest._id %>" class="btn view-btn">View</a>
+                            <a href="/guest/<%= guest._id %>/edit" class="btn edit-btn">Edit</a>
+                            <form action="/guest/<%= guest._id %>?_method=DELETE" method="POST" class="delete-form">
+                                <button type="submit" class="btn delete-btn">Delete</button>
+                            </form>
+                        </div>
+                    <% }) %>
+                </div>
+                <a href="/events/<%= event._id %>/guests/new" class="btn add-btn" id="add-new-guest">Add New
+                    Guest
+                </a>
+            </section>
+        </main>
     </div>
-    <a href="/events/<%= event._id %>/guests/new" class="btn add-btn" id="add-new-guest">Add New Guest</a>
-
 </body>
 
 </html>
