@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const rsvpSchema = new mongoose.Schema({
     guestId: {
-        type: mongoose.Schema.types.ObjectId,
-        ref: Guest,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Guest",
         required: true
     },
     attending: {

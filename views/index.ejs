@@ -9,21 +9,22 @@
 
 <body>
   <div class="layout">
-    <%- include("./partials/_navbar.ejs") %>
-    <main class="content">
-      <% if (user) { %>
+    <% if (user) { %>
+      <%- include("./partials/_navbar.ejs") %>
+      <main class="content">
         <h1>Welcome to the app, <%= user.username %>!</h1>
         <p>
           <a href="/auth/sign-out">Sign out</a>
         </p>
-      <% } else { %>
-        <h1>Welcome to the app, guest.</h1>
-        <p>
-          <a href="/auth/sign-up">Sign up</a> or
-          <a href="/auth/sign-in">Sign in</a>.
-        </p>
-      <% } %>
-    </main>
+        <% } else { %>
+          <main class="content"></main>
+          <h1>Welcome to the app, guest.</h1>
+          <p>
+            <a href="/auth/sign-up">Sign up</a> or
+            <a href="/auth/sign-in">Sign in</a>.
+          </p>
+        <% } %>
+      </main>
   </div>
 </body>
 

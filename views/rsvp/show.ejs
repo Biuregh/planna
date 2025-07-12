@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSVP for <%= rsvp.guestId.firstName %> <%= rsvp.guestId.lastName %></title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="rsvp-show" id="rsvp-show">
+                <h1 class="heading">RSVP Details</h1>
+                <div class="rsvp-details">
+                    <p><strong>Guest:</strong>
+                        <%= rsvp.guestId.firstName %> <%= rsvp.guestId.lastName %>
+                    </p>
+                    <p><strong>Attending:</strong>
+                        <%= rsvp.attending %>
+                    </p>
+                    <p><strong>Meal Choice:</strong>
+                        <%= rsvp.mealChoice || 'N/A' %>
+                    </p>
+                    <p><strong>Responded At:</strong>
+                        <%= rsvp.createdAt.toLocaleString() %>
+                    </p>
+                </div>
+                <a class="btn btn-edit" href="/events/<%= rsvp.guestId.eventId %>/rsvps/<%= rsvp._id %>/edit">Edit
+                    RSVP</a>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -10,7 +10,9 @@ const session = require("express-session");
 
 const authController = require("./controllers/auth.js");
 const eventController = require("./controllers/eventController.js");
-const guestController = require("./controllers/guestController.js")
+const guestController = require("./controllers/guestController.js");
+const rsvpController = require("./controllers/rsvpController");
+
 
 
 const port = process.env.PORT ? process.env.PORT : "3000";
@@ -40,7 +42,9 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authController);
 app.use("/events", eventController);
-app.use(guestController); 
+app.use(guestController);
+app.use("/events/:eventId/rsvps", rsvpController);
+
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit <%= rsvp.guestId.firstName %> <%= rsvp.guestId.lastName %> RSVP</title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="rsvp-edit" id="rsvp-edit">
+                <h1 class="heading">Edit RSVP for <%= rsvp.guestId.firstName %> <%= rsvp.guestId.lastName %> </h1>
+                <form class="form-rsvp"
+                    action="/events/<%= rsvp.guestId.eventId %>/rsvps/<%= rsvp._id %>?_method=PUT" method="POST">
+                    <label for="attending">Attending:</label>
+                    <select id="attending" name="attending" required>
+                        <option value="pending" <%= rsvp.attending==="pending" ? "selected" : "" %>>Pending</option>
+                        <option value="yes" <%= rsvp.attending=== "yes" ? "selected" : "" %>>Yes</option>
+                        <option value="no" <%= rsvp.attending === "no" ? "selected" : "" %>>No</option>
+                    </select>
+                    <label for="mealChoice">Meal Choice:</label>
+                    <input type="text" id="mealChoice" name="mealChoice" value="<%= rsvp.mealChoice %>" />
+                    <button class="btn btn-submit" type="submit">Update RSVP</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

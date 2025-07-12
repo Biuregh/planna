@@ -26,6 +26,7 @@
                             <span class="event-date">
                                 <%= event.location %>
                             </span>
+                            <a class="btn btn-rsvp" href="/events/<%= event._id %>/rsvps">RSVPs</a>
                             <a class="btn btn-edit" href="/events/<%= event._id %>/edit">Edit</a>
                             <form class="event-delete-form" action="/events/<%= event._id %>?_method=DELETE"
                                 method="POST">
