@@ -2,19 +2,18 @@ const mongoose = require("mongoose");
 
 const taskSchema = new mongoose.Schema({
     userId: {
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
     },
     eventId: {
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Event",
         required: true
     },
-    vendord: {
-        type: mongoose.Schema.Type.ObjectId,
+    vendorId: {
+        type: mongoose.Schema.Types.ObjectId,
         ref: "UserVendor",
-        required: true
     },
     title: {
         type: String,
@@ -28,7 +27,7 @@ const taskSchema = new mongoose.Schema({
     },
     category: String,
     dueDate: Date,
-    assignedto: String
+    assignedTo: String
 },
     { timestamps: true });
 
