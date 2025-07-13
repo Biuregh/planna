@@ -8,12 +8,15 @@ const UserVendor = require("../models/userVendor");
 //I.N.D.U.C.E.S
 
 // Index  - Show all tasks
-router.get("/", async (req, res) => {
+router.get("/:eventId/tasks", async (req, res) => {
     const { eventId } = req.params;
     try {
         const event = await Event.findById(eventId);
+        if(!event){
+            return res.status(404).send("event not found");
+        }
         const tasks = await Task.find({ eventId });
-        res.render("tasks/index.ejs", { event, tasks });
+        res.render("task/index.ejs", { event, tasks });
     } catch (err) {
         console.error(err);
         res.status(500).send("Error loading tasks.");
@@ -21,11 +24,11 @@ router.get("/", async (req, res) => {
 });
 
 //New - Show new task form
-router.get("/new", async (req, res) => {
+router.get("/:eventId/tasks/new", async (req, res) => {
     const { eventId } = req.params;
     try {
         const vendors = await UserVendor.find({ eventId });
-        res.render("tasks/new.ejs", { eventId, vendors });
+        res.render("task/new.ejs", { eventId, vendors });
     } catch (err) {
         console.error(err);
         res.status(500).send("Error loading new task form.");
@@ -33,7 +36,7 @@ router.get("/new", async (req, res) => {
 });
 
 //Delete - Delete existing task
-router.delete("/:taskId", async (req, res) => {
+router.delete("/:eventId/tasks/:taskId", async (req, res) => {
     const { eventId, taskId } = req.params;
     try {
         await Task.findByIdAndDelete(taskId);
@@ -45,7 +48,7 @@ router.delete("/:taskId", async (req, res) => {
 });
 
 //Update - Update existing task
-router.put("/:taskId", async (req, res) => {
+router.put("/:eventId/tasks/:taskId", async (req, res) => {
     const { eventId, taskId } = req.params;
     try {
         await Task.findByIdAndUpdate(taskId, req.body);
@@ -57,7 +60,7 @@ router.put("/:taskId", async (req, res) => {
 });
 
 //Create - Creation of new task
-router.post("/", async (req, res) => {
+router.post("/:eventId/tasks", async (req, res) => {
     const { eventId } = req.params;
     try {
         const newTask = new Task({
@@ -74,12 +77,12 @@ router.post("/", async (req, res) => {
 });
 
 //Edit - Show edit task form
-router.get("/:taskId/edit", async (req, res) => {
+router.get("/:eventId/tasks/:taskId/edit", async (req, res) => {
     const { eventId, taskId } = req.params;
     try {
         const task = await Task.findById(taskId);
         const vendors = await UserVendor.find({ eventId });
-        res.render("tasks/edit.ejs", { eventId, task, vendors });
+        res.render("task/edit.ejs", { eventId, task, vendors });
     } catch (err) {
         console.error(err);
         res.status(500).send("Error loading task edit form.");
@@ -87,11 +90,11 @@ router.get("/:taskId/edit", async (req, res) => {
 });
 
 //Show - Show single task
-router.get("/:taskId", async (req, res) => {
+router.get("/:eventId/tasks/:taskId", async (req, res) => {
     const { eventId, taskId } = req.params;
     try {
         const task = await Task.findById(taskId).populate("vendorId");
-        res.render("tasks/show.ejs", { eventId, task });
+        res.render("task/show.ejs", { eventId, task });
     } catch (err) {
         console.error(err);
         res.status(404).send("Task not found.");

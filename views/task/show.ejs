@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= task.title %> Details
+    </title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="task-show">
+                <h1 class="heading">
+                    <%= task.title %>
+                </h1>
+                <p><strong>Status:</strong>
+                    <%= task.status %>
+                </p>
+                <p><strong>Description:</strong>
+                    <%= task.description || "None" %>
+                </p>
+                <p><strong>Category:</strong>
+                    <%= task.category || "None" %>
+                </p>
+                <p><strong>Due Date:</strong>
+                    <%= task.dueDate ? new Date(task.dueDate).toLocaleDateString() : "N/A" %>
+                </p>
+                <p><strong>Assigned To:</strong>
+                    <%= task.assignedTo || "Unassigned" %>
+                </p>
+                <a class="btn btn-edit" href="/events/<%= eventId %>/tasks/<%= task._id %>/edit">Edit</a>
+                <form class="form-delete" action="/events/<%= eventId %>/tasks/<%= task._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-delete" type="submit">Delete</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

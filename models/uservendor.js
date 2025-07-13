@@ -2,17 +2,17 @@ const mongoose = require("mongoose");
 
 const userVendorSchema = new mongoose.Schema({
     userId: {
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
     },
     eventId: {
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Event",
         required: true
     },
     vendord: {
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "UserVendor",
         required: true
     },

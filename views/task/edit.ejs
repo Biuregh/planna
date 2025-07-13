@@ -1,0 +1,46 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="task-edit">
+                <h1 class="heading">Edit Task</h1>
+                <form class="form-task" action="/events/<%= eventId %>/tasks/<%= task._id %>?_method=PUT" method="POST">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" value="<%= task.title %>" required />
+                    
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description"><%= task.description %></textarea>
+                    
+                    <label for="status">Status:</label>
+                    <select id="status" name="status">
+                        <option value="todo" <%=task.status==="todo" ? "selected" : "" %>>To Do</option>
+                        <option value="in progress" <%=task.status==="in progress" ? "selected" : "" %>>In Progress
+                        </option>
+                        <option value="done" <%=task.status==="done" ? "selected" : "" %>>Done</option>
+                    </select>
+                    
+                    <label for="category">Category:</label>
+                    <input type="text" id="category" name="category" value="<%= task.category %>" />
+
+                    <label for="dueDate">Due Date:</label>
+                    <input type="date" id="dueDate" name="dueDate" value="<%= task.dueDate ? task.dueDate.toISOString().split("T")[0] : "" %>" />
+                    
+                    <label for="assignedTo">Assigned To:</label>
+                    <input type="text" id="assignedTo" name="assignedTo" value="<%= task.assignedTo %>" />
+                    
+                    <button class="btn btn-submit" type="submit">Update Task</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

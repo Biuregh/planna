@@ -12,8 +12,7 @@ const authController = require("./controllers/auth.js");
 const eventController = require("./controllers/eventController.js");
 const guestController = require("./controllers/guestController.js");
 const rsvpController = require("./controllers/rsvpController");
-
-
+const taskController = require("./controllers/taskController.js");
 
 const port = process.env.PORT ? process.env.PORT : "3000";
 
@@ -44,6 +43,8 @@ app.use("/auth", authController);
 app.use("/events", eventController);
 app.use(guestController);
 app.use("/events/:eventId/rsvps", rsvpController);
+app.use("/events", taskController);
+
 
 
 app.listen(port, () => {

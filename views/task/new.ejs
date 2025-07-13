@@ -1,0 +1,39 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Task</title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="task-new">
+                <h1 class="heading">Create New Task</h1>
+                <form class="form-task" action="/events/<%= eventId %>/tasks" method="POST">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required />
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description"></textarea>
+                    <label for="status">Status:</label>
+                    <select id="status" name="status">
+                        <option value="todo">To Do</option>
+                        <option value="in progress">In Progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                    <label for="category">Category:</label>
+                    <input type="text" id="category" name="category" />
+                    <label for="dueDate">Due Date:</label>
+                    <input type="date" id="dueDate" name="dueDate" />
+                    <label for="assignedTo">Assigned To:</label>
+                    <input type="text" id="assignedTo" name="assignedTo" />
+                    <button class="btn btn-submit" type="submit">Create Task</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
