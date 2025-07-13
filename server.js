@@ -46,7 +46,7 @@ app.use("/events", eventController);
 app.use(guestController);
 app.use("/events/:eventId/rsvps", rsvpController);
 app.use("/events", taskController);
-app.use("//vendors", vendorController);
+app.use("/vendors", vendorController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);

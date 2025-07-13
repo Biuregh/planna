@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendors</title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="vendor-index">
+                <h1 class="heading">All Vendors</h1>
+                <a class="btn btn-create" href="/vendors/new">Add New Vendor</a>
+                <% if (vendors.length===0) { %>
+                    <p class="no-results">No vendors added yet.</p>
+                <% } else { %>
+                    <table class="vendor-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Service Type</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% vendors.forEach(vendor=> { %>
+                                <tr class="vendor-row">
+                                    <td>
+                                        <%= vendor.name %>
+                                    </td>
+                                    <td>
+                                        <%= vendor.city || "N/A" %>
+                                    </td>
+                                    <td>
+                                        <%= vendor.state || "N/A" %>
+                                    </td>
+                                    <td>
+                                        <%= vendor.serviceType %>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-view" href="/vendors/<%= vendor._id %>">View</a>
+                                        <a class="btn btn-edit" href="/vendors/<%= vendor._id %>/edit">Edit</a>
+                                        <form class="form-delete" action="/vendors/<%= vendor._id %>?_method=DELETE" method="POST">
+                                            <button class="btn btn-delete" type="submit">Delete</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                <% } %>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
