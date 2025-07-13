@@ -11,7 +11,7 @@ const userVendorSchema = new mongoose.Schema({
         ref: "Event",
         required: true
     },
-    vendord: {
+    vendorId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "UserVendor",
         required: true
