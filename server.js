@@ -13,6 +13,8 @@ const eventController = require("./controllers/eventController.js");
 const guestController = require("./controllers/guestController.js");
 const rsvpController = require("./controllers/rsvpController");
 const taskController = require("./controllers/taskController.js");
+const vendorController = require("./controllers/vendorController.js");
+
 
 const port = process.env.PORT ? process.env.PORT : "3000";
 
@@ -44,8 +46,7 @@ app.use("/events", eventController);
 app.use(guestController);
 app.use("/events/:eventId/rsvps", rsvpController);
 app.use("/events", taskController);
-
-
+app.use("//vendors", vendorController);
 
 app.listen(port, () => {
   console.log(`The express app is ready on port ${port}!`);
