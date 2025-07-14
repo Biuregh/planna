@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Vendors</title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="event-index">
+                <h1 class="heading">Linked Vendors</h1>
+                <a class="btn btn-create" href="/events/<%= eventId %>/vendors/new">Link a Vendor</a>
+                <ul class="event-list">
+                    <% userVendors.forEach(link=> { %>
+                        <li class="event-item">
+                            <a class="event-link" href="/events/<%= eventId %>/vendors/<%= link._id %>">
+                                <%= link.vendorId ? link.vendorId.name : 'Unknown Vendor' %>
+                            </a>
+                            <span class="event-date">
+                                <%= link.vendorId ? link.vendorId.serviceType : 'N/A' %>
+                            </span>
+                            <span class="event-date">
+                                <%= link.vendorId ? link.vendorId.city : 'N/A' %>, 
+                                <%= link.vendorId ? link.vendorId.state : 'N/A' %>
+                            </span>
+                            <a class="btn btn-edit"
+                                href="/events/<%= eventId %>/vendors/<%= link._id %>/edit">Edit</a>
+                            <form class="event-delete-form"
+                                action="/events/<%= eventId %>/vendors/<%= link._id %>?_method=DELETE"
+                                method="POST">
+                                <button class="btn btn-delete" type="submit">Delete</button>
+                            </form>
+                        </li>
+                    <% }) %>
+                </ul>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

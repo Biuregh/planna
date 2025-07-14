@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Vendor Link</title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="event-index">
+                <h1 class="heading">Edit Linked Vendor</h1>
+                <form class="form" action="/events/<%= eventId %>/vendors/<%= userVendor._id %>?_method=PUT"
+                    method="POST">
+                    <label for="vendorId">Vendor (not editable):</label>
+                    <select name="vendorId" id="vendorId" disabled>
+                        <% vendors.forEach(v=> { %>
+                            <option value="<%= v._id %>" <%=userVendor.vendorId.toString()===v._id.toString()
+                                ? 'selected' : '' %>>
+                                <%= v.name %> - <%= v.serviceType %>
+                            </option>
+                        <% }) %>
+                    </select>
+                    <label for="notes">Notes:</label>
+                    <textarea name="notes" id="notes" rows="3"><%= userVendor.notes %></textarea>
+                    <label for="totalCost">Total Cost:</label>
+                    <input type="number" name="totalCost" id="totalCost" step="0.01"
+                        value="<%= userVendor.totalCost %>" />
+                    <label for="rate">Rate (1-5):</label>
+                    <input type="number" name="rate" id="rate" min="1" max="5" value="<%= userVendor.rate %>" />
+                    <button class="btn btn-submit" type="submit">Update Vendor</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

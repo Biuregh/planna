@@ -13,7 +13,7 @@ const userVendorSchema = new mongoose.Schema({
     },
     vendorId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "UserVendor",
+        ref: "Vendor",
         required: true
     },
     notes: String,
@@ -27,5 +27,5 @@ const userVendorSchema = new mongoose.Schema({
 },
     { timestamps: true });
 
-const UserVendor = mongoose.model("UserVendor", userVendorSchema);
+const UserVendor = mongoose.models.UserVendor || mongoose.model("UserVendor", userVendorSchema);
 module.exports = UserVendor;

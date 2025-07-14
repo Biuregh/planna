@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Detail</title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="event-index">
+                <h1 class="heading">Vendor Detail</h1>
+                <p><strong>Name:</strong>
+                    <%= userVendor.vendorId.name %>
+                </p>
+                <p><strong>Service:</strong>
+                    <%= userVendor.vendorId.serviceType %>
+                </p>
+                <p><strong>Notes:</strong>
+                    <%= userVendor.notes %>
+                </p>
+                <p><strong>Total Cost:</strong> $<%= userVendor.totalCost %>
+                </p>
+                <p><strong>Rate:</strong>
+                    <%= userVendor.rate %>/5
+                </p>
+                <a class="btn btn-edit"
+                    href="/events/<%= eventId %>/vendors/<%= userVendor._id %>/edit">Edit
+                </a>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -51,7 +51,7 @@ router.put("/:id", async (req, res) => {
             contractFile: req.body.contractFile || [],
             rate: req.body.rate,
         });
-        res.redirect(`/events/${eventId}`);
+        res.redirect(`/events/${eventId}/vendors`);
     } catch (err) {
         console.error(err);
         res.status(500).send("Error updating vendor link");
@@ -62,19 +62,30 @@ router.put("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
     const { eventId } = req.params;
     const userId = req.session.user;
+    const { vendorId, notes, totalCost, contractFile, rate } = req.body;
+
     try {
+        if (!vendorId) {
+            return res.status(400).send("Please select a vendor.");
+        }
+
+        const vendorExists = await Vendor.findById(vendorId);
+        if (!vendorExists) {
+            return res.status(400).send("Selected vendor does not exist.");
+        }
+
         const userVendor = new UserVendor({
             userId,
             eventId,
-            vendorId: req.body.vendorId,
-            notes: req.body.notes,
-            totalCost: req.body.totalCost,
-            contractFile: req.body.contractFile || [],
-            rate: req.body.rate,
+            vendorId,
+            notes,
+            totalCost,
+            contractFile: contractFile || [],
+            rate,
         });
 
         await userVendor.save();
-        res.redirect(`/events/${eventId}`);
+        res.redirect(`/events/${eventId}/vendors`);
     } catch (err) {
         console.error(err);
         res.status(500).send("Error linking vendor to event");
@@ -85,9 +96,10 @@ router.post("/", async (req, res) => {
 router.get("/:id/edit", async (req, res) => {
     const { eventId, id } = req.params;
     try {
+        const vendors = await Vendor.find({});
         const userVendor = await UserVendor.findById(id);
         if (!userVendor) return res.status(404).send("UserVendor not found");
-        res.render("userVendors/edit.ejs", { userVendor, eventId });
+        res.render("userVendors/edit.ejs", { userVendor, eventId, vendors });
     } catch (err) {
         console.error(err);
         res.status(500).send("Error loading edit form");
