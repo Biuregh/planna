@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Payment</title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="event-index">
+                <h1 class="heading">Add Payment <%= vendor.name %></h1>
+                <form method="POST" action="/events/<%= eventId %>/payments/<%= vendor._id %>/<%= userVendorId %>">
+
+                    <label class="form-label">Amount:</label>
+                    <input type="number" name="amount" placeholder="Amount" required>
+
+                    <label class="form-label">Type:</label>
+                    <select name="paymentType" required>
+                        <option value="deposit">Deposit</option>
+                        <option value="installment">Installment</option>
+                        <option value="final">Final</option>
+                    </select>
+
+                    <label class="form-label">Instalment Number:</label>
+                    <input type="number" name="instalmentNumber" placeholder="Installment Number">
+
+                    <label class="form-label">Total Instalment:</label>
+                    <input type="number" name="totalInstalment" placeholder="Total Installments">
+
+                    <label class="form-label">Due Date:</label>
+                    <input type="date" name="dueDate">
+
+                    <label class="form-label">Paid date:</label>
+                    <input type="date" name="paidDate">
+
+                    <label class="form-label">Status:</label>
+                    <select name="status">
+                        <option value="pending">Pending</option>
+                        <option value="paid">Paid</option>
+                        <option value="cancelled">Cancelled</option>
+                        <option value="refunded">Refunded</option>
+                        <option value="overdue">Overdue</option>
+                    </select>
+
+                    <label class="form-label">Note:</label>
+                    <textarea name="notes" placeholder="Notes"></textarea>
+                    
+                    <button type="submit" class="btn btn-create">Create Payment</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+</body>
+
+</html>

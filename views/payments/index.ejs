@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments</title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="event-index">
+                <h1 class="heading">All Payments</h1>
+                <a class="btn btn-create" href="/events/<%= eventId %>">Back to Event</a>
+                <% userVendors.forEach(userVendor=> { %>
+                    <section class="vendor-payments">
+                        <h2>
+                            <%= userVendor.vendorId?.name || "Unknown Vendor" %>
+                        </h2>
+                        <ul>
+                            <% payments.filter(p=> p.userVendorId.toString() ===
+                                userVendor._id.toString()).forEach(payment => { %>
+                                <li>
+                                    <a class="payment-link" href="/events/<%= eventId %>/payments/<%= payment._id %>/<%= userVendor._id %>">$<%= payment.amount %></a>
+                                     - <%= payment.paymentType %> - <%= payment.status %>
+                                    <a href="/events/<%= eventId %>/payments/<%= payment._id %>/edit/<%= userVendor._id %>">Edit</a>
+                                    <form class="payment-delete-form" action="/events/<%= eventId %>/payments/<%= payment._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-delete" type="submit">Delete</button>
+                                    </form>
+                                </li>
+                            <% }) %>
+                        </ul>
+                        <a class="btn" href="/events/<%= eventId %>/payments/new/<%= userVendor._id %>">Add
+                            Payment</a>
+                    </section>
+                    <% }) %>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edt Payment</title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
+        <main class="content">
+            <section class="event-index">
+                <h1 class="heading">Edit Payment
+                </h1>
+                <form method="POST"
+                    action="/events/<%= eventId %>/payments/<%= payment._id %>?_method=PUT">
+                    <input type="number" name="amount" value="<%= payment.amount %>" required>
+                    <select name="paymentType">
+                        <option value="deposit" <%=payment.paymentType==='deposit' ? 'selected' : '' %>>Deposit
+                        </option>
+                        <option value="installment" <%=payment.paymentType==='installment' ? 'selected' : '' %>
+                            >Installment</option>
+                        <option value="final" <%=payment.paymentType==='final' ? 'selected' : '' %>>Final</option>
+                    </select>
+                    <input type="number" name="instalmentNumber" value="<%= payment.instalmentNumber %>">
+                    <input type="number" name="totalInstalment" value="<%= payment.totalInstalment %>">
+                    <input type="date" name="dueDate" value="<%= payment.dueDate?.toISOString().split('T')[0] %>">
+                    <input type="date" name="paidDate" value="<%= payment.paidDate?.toISOString().split('T')[0] %>">
+                    <select name="status">
+                        <option value="pending" <%=payment.status==='pending' ? 'selected' : '' %>>Pending</option>
+                        <option value="paid" <%=payment.status==='paid' ? 'selected' : '' %>>Paid</option>
+                        <option value="cancelled" <%=payment.status==='cancelled' ? 'selected' : '' %>>Cancelled
+                        </option>
+                        <option value="refunded" <%=payment.status==='refunded' ? 'selected' : '' %>>Refunded
+                        </option>
+                        <option value="overdue" <%=payment.status==='overdue' ? 'selected' : '' %>>Overdue</option>
+                    </select>
+                    <textarea name="notes"><%= payment.notes %></textarea>
+                    <button type="submit" class="btn btn-create">Update Payment</button>
+                </form>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

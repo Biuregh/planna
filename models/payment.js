@@ -2,18 +2,23 @@ const mongoose = require("mongoose");
 
 const paymentSchema = new mongoose.Schema({
     userId: {
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
     },
     eventId: {
-        type: mongoose.Schema.Type.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "Event",
         required: true
     },
-    userVendord: {
-        type: mongoose.Schema.Type.ObjectId,
+    userVendorId: {
+        type: mongoose.Schema.Types.ObjectId,
         ref: "UserVendor",
+        required: true
+    },
+    vendorId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Vendor",
         required: true
     },
     amount: {
@@ -31,8 +36,8 @@ const paymentSchema = new mongoose.Schema({
     paidDate: Date,
     status: {
         type: String,
-        enum: ["pendig", "paid", "cancelled", "refunded", "overdue"],
-        defult: pending
+        enum: ["pending", "paid", "cancelled", "refunded", "overdue"],
+        defult: "pending"
     },
     notes: String,
 },
