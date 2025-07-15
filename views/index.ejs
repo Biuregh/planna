@@ -2,29 +2,120 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planna – Plan Your Perfect Event</title>
 </head>
 
 <body>
   <div class="layout">
-    <% if (user) { %>
-      <%- include("./partials/_navbar.ejs") %>
-      <main class="content">
-        <h1>Welcome to the app, <%= user.username %>!</h1>
-        <p>
-          <a href="/auth/sign-out">Sign out</a>
-        </p>
-        <% } else { %>
-          <main class="content"></main>
-          <h1>Welcome to the app, guest.</h1>
-          <p>
-            <a href="/auth/sign-up">Sign up</a> or
-            <a href="/auth/sign-in">Sign in</a>.
-          </p>
-        <% } %>
-      </main>
+    <main class="content">
+
+      <section class="hero">
+        <div class="hero-overlay">
+          <div class="hero-content centered">
+            <h1 class="heading">Say "I Do" to planning like a Pro!</h1>
+            <p class="intro-text">Effortlessly plan weddings, parties, and events with all your vendors, guests, RSVPs,
+              and tasks in one place.</p>
+            <div class="hero-buttons">
+              <a href="/auth/sign-up" class="btn btn-primary">Get Started</a>
+              <a href="/auth/fign-in" class="btn btn-secondary">Already have an account?</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="section how-it-works">
+        <h2 class="subheading">How It Works</h2>
+        <div class="how-it-works-grid">
+
+          <div class="how-step">
+            <img src="/images/step-create-event.png" alt="Create event" class="how-img" />
+            <h3>1. Create an Event</h3>
+            <p>Start by entering your event’s name, date, and location.</p>
+          </div>
+
+          <div class="how-step">
+            <img src="/images/step-add-vendors.png" alt="Add vendors and guests" class="how-img" />
+            <h3>2. Add Vendors & Guests</h3>
+            <p>Invite guests, assign vendors, and keep everything organized.</p>
+          </div>
+
+          <div class="how-step">
+            <img src="/images/step-track.png" alt="Track everything" class="how-img" />
+            <h3>3. Track Everything</h3>
+            <p>Stay on top of RSVPs, tasks, budgets, and vendor payments.</p>
+          </div>
+
+          <div class="how-step">
+            <img src="/images/step-enjoy.png" alt="Celebrate" class="how-img" />
+            <h3>4. Celebrate Stress-Free</h3>
+            <p>Enjoy your event knowing Planna took care of the chaos.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="section stats">
+        <h2 class="subheading">Our Impact</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <h3>5,000+</h3>
+            <p>Events Successfully Planned</p>
+          </div>
+          <div class="stat-box">
+            <h3>3,800+</h3>
+            <p>Happy Customers</p>
+          </div>
+          <div class="stat-box">
+            <h3>12,000+</h3>
+            <p>Active Users</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section testimonials">
+        <h2 class="subheading">What Our Users Say</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <p>“Planna made our wedding planning so easy! We loved tracking everything in one place.”</p>
+            <strong>– Sarah & Mike</strong>
+          </div>
+          <div class="testimonial-card">
+            <p>“I hosted a corporate retreat and Planna kept me on schedule and on budget.”</p>
+            <strong>– Jason A.</strong>
+          </div>
+          <div class="testimonial-card">
+            <p>“Vendors loved it, I loved it, and my birthday was amazing thanks to this app.”</p>
+            <strong>– Elina R.</strong>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-left">
+          <h3>Planna</h3>
+          <p>Making event planning delightful and stress-free.</p>
+        </div>
+        <div class="footer-center">
+          <p><strong>Contact Us:</strong></p>
+          <p>Email: support@planna.com</p>
+          <p>Phone: (555) 123-4567</p>
+        </div>
+        <div class="footer-right">
+          <p><strong>Follow Us</strong></p>
+          <a href="#" class="social-link">Instagram</a>
+          <a href="#" class="social-link">Facebook</a>
+          <a href="#" class="social-link">Twitter</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <%= new Date().getFullYear() %> Planna. All rights reserved.</p>
+      </div>
+    </footer>
   </div>
 </body>
 
