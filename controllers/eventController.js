@@ -35,11 +35,12 @@ router.delete("/:id", async (req, res) => {
 //Update - Update existing event
 router.put("/:id", async (req, res) => {
     try {
-        const { name, date, location, notes } = req.body;
+        const { name, date, location, notes, budget } = req.body;
         await Event.findByIdAndUpdate(req.params.id, {
             name,
             date,
             location,
+            budget,
             notes,
         });
         res.redirect(`/events`);
@@ -51,12 +52,13 @@ router.put("/:id", async (req, res) => {
 //Create - Creation of new event
 router.post("/", async (req, res) => {
     try {
-        const { name, date, location, notes } = req.body;
+        const { name, date, location, notes, budget } = req.body;
         await Event.create({
             name,
             date,
             location,
             notes,
+            budget,
             userId: req.session.user._id
         });
         res.redirect("/events");

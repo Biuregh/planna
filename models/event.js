@@ -20,6 +20,7 @@ const eventSchema = new mongoose.Schema({
     notes: {
         type: String
     },
+    budget:  Number,
 
 }, { timestamps: true });
 

@@ -26,6 +26,9 @@
                 <p class="event-field"><strong>Notes:</strong>
                     <%= event.notes %>
                 </p>
+                <p class="event-field"><strong>Budget:</strong>
+                    <%= event.budget %>
+                </p>
                 <div class="event-actions">
                     <a class="btn btn-edit" href="/events/<%= event._id %>/edit">Edit</a>
                     <form class="event-delete-form" action="/events/<%= event._id %>?_method=DELETE" method="POST">
