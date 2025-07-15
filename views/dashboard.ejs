@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="layout">
+        <%- include("./partials/_navbar") %>
+        <main class="content">
+            <section class="dashboard">
+                <h1 class="heading">Welcome, <%= user.firstName %>!</h1>
+                <% if (dashboardData.length===0) { %>
+                    <p>You don't have any events yet. <a href="/events/new" class="btn btn-create">Create an event</a></p>
+                <% } %>
+                <% dashboardData.forEach(data=> { %>
+                    <div class="event-dashboard">
+                        <h2 class="subheading">
+                            <%= data.event.name %>
+                        </h2>
+                        <p class="event-info">
+                            <strong>Date:</strong>
+                            <%= new Date(data.event.date).toDateString() %> –
+                            <strong>
+                                <%= data.daysLeft %> days left
+                            </strong><br>
+                            <strong>Location:</strong>
+                            <%= data.event.location || "Not specified" %>
+                        </p>
+                        <h3>RSVP Summary</h3>
+                        <ul class="dashboard-list">
+                            <li>Confirmed: <%= data.rsvpStats.confirmed %>
+                            </li>
+                            <li>Declined: <%= data.rsvpStats.declined %>
+                            </li>
+                            <li> Pending: <%= data.rsvpStats.pending %>
+                            </li>
+                        </ul>
+                        <h3>Upcoming Tasks</h3>
+                        <% if (data.tasks.length> 0) { %>
+                            <ul class="dashboard-list">
+                                <% data.tasks.forEach(task=> { %>
+                                    <li>
+                                        <%= task.title %> – due <%= new Date(task.dueDate).toLocaleDateString() %>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                        <% } else { %>
+                            <p>No upcoming tasks </p>
+                        <% } %>
+                        <h3>Payments</h3>
+                        <% if (data.payments.length> 0) { %>
+                            <ul class="dashboard-list">
+                                <% data.payments.forEach(payment=> { %>
+                                    <li>
+                                        $<%= payment.amount %> – <%= payment.paymentType %> –
+                                                <%= payment.status %>
+                                    </li>
+                                <% }) %>
+                            </ul>
+                         <% } else { %>
+                            <p>No payments added yet</p>
+                        <% } %>
+                        <h3>Budget Overview</h3>
+                        <p>
+                            Total Budget: $<%= data.budget %><br>
+                            Spent: $<%= data.totalPayments %><br>
+                            Remaining: $<%= data.budgetRemaining %>
+                        </p>
+                        <hr class="dashboard-divider" />
+                    </div>
+                <% }) %>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
