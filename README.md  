@@ -1,0 +1,68 @@
+# Planna
+
+**Planna** is a full-featured event planning app built with the MEN stack (MongoDB, Express, Node.js, and EJS templating). It allows users to create and manage events, invite and track guests, assign vendors, manage vendor contracts, track tasks, and record payments — all in one place.
+
+---
+
+## Screenshot / Logo
+
+![Planna Screenshot](./public/img/dashboard.jpg)  
+
+---
+
+## App Overview
+
+**Planna** simplifies the process of planning an event — whether it’s a wedding, corporate party, or a family gathering. The app was built to support individual planners and small teams who need a central space to organize the many moving parts of an event.
+
+**Key Features:**
+- Create and edit events
+- Add and manage vendors via `UserVendor` connections
+- Track guest RSVPs
+- Assign and complete tasks
+- Create and manage payments for each vendor
+- Dashboard views and responsive layout
+
+I built **Planna** because I wanted an all-in-one event organizer that was both user-friendly and customizable, and that would serve both planners and vendors in a shared space.
+
+---
+
+## Getting Started
+
+- **Deployed App:** [Live Site Link Here](https://your-deployment-url.com)
+- **Planning Docs / Wireframes:** [https://trello.com/invite/b/685f8b4a76500a69b1e82198/ATTIe8aa639fe494ce87091d188e289e36bcEA171A31/planna, https://lucid.app/lucidchart/e8d428ae-3c5f-4d17-88ec-def9ef6291cc/edit?viewport_loc=-900%2C-804%2C3318%2C2258%2C0_0&invitationId=inv_c979007a-b1ca-446a-959f-dbab6b664db7, https://github.com/Biuregh/planna )
+
+---
+
+## 📚 Attributions
+
+- [EJS](https://ejs.co/)
+- [MongoDB](https://www.mongodb.com/)
+- [Express.js](https://expressjs.com/)
+---
+
+## 🛠️ Technologies Used
+
+- JavaScript (ES6+)
+- Node.js
+- Express.js
+- MongoDB & Mongoose
+- EJS for templating
+- CSS Grid for responsive layout
+- Method-Override for PUT/DELETE forms
+- Session and Flash for auth and feedback
+
+---
+
+## 🔮 Next Steps
+
+Some features I plan to add next:
+- User authentication with roles (admin/planner/vendor/guest)
+- Drag-and-drop task manager for event day planning
+- File uploads for vendor contracts
+- Email notifications for RSVP responses and task reminders
+- Search and filter functionality for vendors and guests
+
+---
+
+Thank you for checking out Planna!  
+Feel free to fork, clone, and build on it.
