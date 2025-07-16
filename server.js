@@ -21,7 +21,7 @@ const userVendorController = require("./controllers/userVendorController.js");
 const paymentController = require("./controllers/paymentController.js");
 const dashboardController = require("./controllers/dashboardController.js");
 
-const port = process.env.PORT ? process.env.PORT : "3000";
+const port = process.env.PORT ? process.env.PORT : 80;
 
 mongoose.connect(process.env.MONGODB_URI);
 
