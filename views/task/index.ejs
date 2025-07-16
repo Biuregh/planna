@@ -7,70 +7,55 @@
     <title>
         Tasks for <%= event.name %>
     </title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
 </head>
 
 <body>
     <div class="layout">
         <%- include("../partials/_navbar") %>
-        <main class="content">
-            <section class="task-index" id="task-index">
-                <h1 class="heading">
-                    Tasks for <%= event.name %>
-                </h1>
-                <a class="btn btn-create" href="/events/<%= event._id %>/tasks/new">Add New Task</a>
-                <% if (tasks.length===0) { %>
-                    <p class="no-results">No tasks added for this event yet.</p>
-                <% } else { %>
-                    <table class="task-table">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Description</th>
-                                <th>Status</th>
-                                <th>Category</th>
-                                <th>Due Date</th>
-                                <th>Assigned To</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <% tasks.forEach(task=> { %>
-                                <tr class="task-row">
-                                    <td>
-                                        <%= task.title %>
-                                    </td>
-                                    <td>
-                                        <%= task.description || 'N/A' %>
-                                    </td>
-                                    <td>
-                                        <%= task.status %>
-                                    </td>
-                                    <td>
-                                        <%= task.category || 'N/A' %>
-                                    </td>
-                                    <td>
-                                        <%= task.dueDate ? new Date(task.dueDate).toLocaleDateString() : 'N/A' %>
-                                    </td>
-                                    <td>
-                                        <%= task.assignedTo || 'Unassigned' %>
-                                    </td>
-                                    <td>
-                                        <a class="btn btn-view"
-                                            href="/events/<%= event._id %>/tasks/<%= task._id %>">View</a>
-                                        <a class="btn btn-edit"
-                                            href="/events/<%= event._id %>/tasks/<%= task._id %>/edit">Edit</a>
-                                        <form class="form-delete"
-                                            action="/events/<%= event._id %>/tasks/<%= task._id %>?_method=DELETE" method="POST">
-                                            <button class="btn btn-delete" type="submit">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            <% }) %>
-                        </tbody>
-                    </table>
-                 <% } %>
-            </section>
-        </main>
+            <main class="content">
+                <section class="task-index" id="task-index">
+                    <h1 class="heading">
+                        Tasks for <%= event.name %>
+                    </h1>
+                    <a class="btn btn-create" href="/events/<%= event._id %>">Back to Event</a>
+                    <a class="btn btn-create" href="/events/<%= event._id %>/tasks/new">Add New Task</a>
+                    <% if (tasks.length===0) { %>
+                        <p class="no-results">No tasks added for this event yet.</p>
+                        <% } else { %>
+                            <div class="task-grid" id="task-list">
+                                <% tasks.forEach(task=> { %>
+                                    <div class="guest-card">
+                                        <h2 class="guest-name">
+                                            <%= task.title %>
+                                        </h2>
+                                        <p>Status: <%= task.status %>
+                                        </p>
+                                        <p>Category: <%= task.category || 'N/A' %>
+                                        </p>
+                                        <p>Due Date: <%= task.dueDate ? new
+                                                Date(task.dueDate).toLocaleDateString() : 'N/A' %>
+                                        </p>
+                                        <p>Assigned to: <%= task.assignedTo || 'Unassigned' %>
+                                        </p>
+                                        <div class="div-btn-payment">
+                                            <a class="btn btn-view"
+                                                href="/events/<%= event._id %>/tasks/<%= task._id %>">View</a>
+                                            <a class="btn btn-edit"
+                                                href="/events/<%= event._id %>/tasks/<%= task._id %>/edit">Edit</a>
+                                            <form class="form-delete"
+                                                action="/events/<%= event._id %>/tasks/<%= task._id %>?_method=DELETE"
+                                                method="POST">
+                                                <button class="btn btn-delete" type="submit">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <% }) %>
+                            </div>
+                        <% } %>
+                </section>
+            </main>
     </div>
 </body>
 

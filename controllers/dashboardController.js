@@ -21,6 +21,7 @@ router.get("/dashboard", async (req, res) => {
             const guestIds = guests.map((guest)=>{
                 return guest._id
             })
+            const guestCount = guestIds.length;
             const rsvps = await RSVP.find({ guestId: { $in: guestIds}});
             const tasks = await Task.find({ eventId: event._id, status:{ $ne: "done"} }).sort("dueDate");
             const payments = await Payment.find({ eventId: event._id });
@@ -43,7 +44,8 @@ router.get("/dashboard", async (req, res) => {
                 totalPayments,
                 budget,
                 budgetRemaining,
-                daysLeft: Math.ceil((new Date(event.date) - new Date()) / (1000 * 60 * 60 * 24))
+                daysLeft: Math.ceil((new Date(event.date) - new Date()) / (1000 * 60 * 60 * 24)),
+                guestCount
             };
         }));
         console.log(dashboardData)

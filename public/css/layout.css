@@ -1,0 +1,271 @@
+.layout-home {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    min-height: 100vh;
+}
+
+.content {
+    padding: 2rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.app-header {
+    padding: 1rem 2rem;
+    background-color: var(--background);
+    border-bottom: 1px solid var(--accent);
+    z-index: 999;
+}
+
+.logo a {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.sidebar {
+    height: 100%;
+    background-color: var(--primary);
+    padding: 10rem 1rem;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    z-index: 900;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 1rem 15px;
+}
+
+.sidebar a {
+    color: white;
+    font-weight: 600;
+    display: block;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+}
+
+.sidebar a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hero {
+    position: relative;
+    background: url('https://images.pexels.com/photos/2253842/pexels-photo-2253842.jpeg?_gl=1*1uognh2*_ga*MjE0MjM2Nzc3OC4xNzE0Nzk3MjYz*_ga_8JE65Q40S6*czE3NTI1NjcxNjYkbzUkZzEkdDE3NTI1NjcyOTEkajU0JGwwJGgw') center center/cover no-repeat;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 900px;
+}
+
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.45);
+    padding: 4rem;
+    border-radius: 12px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 900px;
+}
+
+.hero-content.centered {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 30%;
+}
+
+.hero-buttons {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.section-image {
+    max-width: 900px;
+    width: 100%;
+    margin: 2rem auto;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+.section-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 1rem auto 2rem;
+    font-size: 1.1rem;
+}
+
+.cta-wrapper {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.how-it-works-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.how-step {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+.how-step img {
+    max-width: 100px;
+    margin-bottom: 1rem;
+}
+
+.stats-grid,
+.testimonials-grid,
+.guest-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.stat-box,
+.testimonial-card,
+.event-dashboard,
+.guest-card {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+}
+
+.event-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--accent);
+}
+
+.event-main {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 10px 0;
+
+}
+
+.event-meta {
+    display: grid;
+    grid-template-columns: repeat(12, auto);
+}
+
+.event-name {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.event-date {
+    font-size: 1.1rem;
+}
+
+.event-locat,
+.paym-stat,
+.vendor-state {
+    font-size: 1.1rem;
+    grid-column-end: span 6;
+}
+
+.event-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.form-vendor,
+.form-task,
+.event-form,
+.guest-form,
+.form-rsvp {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.event-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.div-btn {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.vendor-table,
+.task-table,
+.rsvp-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
+}
+
+.vendor-table th,
+.vendor-table td,
+.task-table th,
+.task-table td,
+.rsvp-table th,
+.rsvp-table td {
+    border: 1px solid var(--accent);
+    padding: 1rem;
+    text-align: left;
+    white-space: nowrap;
+}
+
+@media (max-width: 1024px) {
+    .how-it-works-grid {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+
+    .hero-overlay {
+        padding: 2rem;
+    }
+
+    .content,
+    .section {
+        padding: 1.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .event-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+}

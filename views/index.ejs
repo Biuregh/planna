@@ -5,10 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Planna – Plan Your Perfect Event</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/layout.css" />
 </head>
 
 <body>
-  <div class="layout">
+  <%- include("./partials/_logo") %>
+  <div class="layout-home">
     <main class="content">
 
       <section class="hero">
@@ -19,7 +22,7 @@
               and tasks in one place.</p>
             <div class="hero-buttons">
               <a href="/auth/sign-up" class="btn btn-primary">Get Started</a>
-              <a href="/auth/fign-in" class="btn btn-secondary">Already have an account?</a>
+              <a href="/auth/sign-in" class="btn btn-secondary">Already have an account?</a>
             </div>
           </div>
         </div>
@@ -27,32 +30,36 @@
 
       <section id="how-it-works" class="section how-it-works">
         <h2 class="subheading">How It Works</h2>
-        <div class="how-it-works-grid">
+        <p class="section-intro">
+          Planna makes event planning intuitive and stress-free. Create an event, link your vendors, track budgets, and
+          manage tasks and RSVPs—all in one place.
+        </p>
 
+        <div class="how-it-works-grid">
           <div class="how-step">
-            <img src="/images/step-create-event.png" alt="Create event" class="how-img" />
             <h3>1. Create an Event</h3>
             <p>Start by entering your event’s name, date, and location.</p>
           </div>
 
           <div class="how-step">
-            <img src="/images/step-add-vendors.png" alt="Add vendors and guests" class="how-img" />
             <h3>2. Add Vendors & Guests</h3>
             <p>Invite guests, assign vendors, and keep everything organized.</p>
           </div>
 
           <div class="how-step">
-            <img src="/images/step-track.png" alt="Track everything" class="how-img" />
             <h3>3. Track Everything</h3>
             <p>Stay on top of RSVPs, tasks, budgets, and vendor payments.</p>
           </div>
 
           <div class="how-step">
-            <img src="/images/step-enjoy.png" alt="Celebrate" class="how-img" />
             <h3>4. Celebrate Stress-Free</h3>
             <p>Enjoy your event knowing Planna took care of the chaos.</p>
           </div>
+        </div>
 
+        <img src="/img/dashboard.jpg" alt="Planna Dashboard Screenshot" class="section-image" />
+        <div class="cta-wrapper">
+          <a href="/auth/sign-up" class="btn btn-primary">Set Up Dashboard</a>
         </div>
       </section>
 

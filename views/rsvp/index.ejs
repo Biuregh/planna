@@ -6,15 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSVPs for <%= event.name %>
     </title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
 </head>
 
 <body>
+    <%- include("../partials/_logo") %>
     <div class="layout">
         <%- include("../partials/_navbar") %>
         <main class="content">
             <section class="rsvp-index" id="rsvp-index">
                 <h1 class="heading">RSVPs for <%= event.name %>
                 </h1>
+                <a class="btn btn-create" href="/events/<%= event._id %>">Back to Event</a>
                 <% if (rsvps.length===0) { %>
                     <p class="no-results">No RSVPs yet for this event.</p>
                 <% } else { %>

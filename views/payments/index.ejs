@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payments</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
 </head>
 
 <body>
+    <%- include("../partials/_logo") %>
     <div class="layout">
         <%- include("../partials/_navbar") %>
         <main class="content">
@@ -23,16 +26,22 @@
                             <% payments.filter(p=> p.userVendorId.toString() ===
                                 userVendor._id.toString()).forEach(payment => { %>
                                 <li>
-                                    <a class="payment-link" href="/events/<%= eventId %>/payments/<%= payment._id %>/<%= userVendor._id %>">$<%= payment.amount %></a>
-                                     - <%= payment.paymentType %> - <%= payment.status %>
-                                    <a href="/events/<%= eventId %>/payments/<%= payment._id %>/edit/<%= userVendor._id %>">Edit</a>
-                                    <form class="payment-delete-form" action="/events/<%= eventId %>/payments/<%= payment._id %>?_method=DELETE" method="POST">
-                                        <button class="btn btn-delete" type="submit">Delete</button>
-                                    </form>
+                                    <div class="event-main">
+                                        <div class="event-meta">
+                                            <span class="payment-link" href=>$<%= payment.amount %></span>
+                                            <span><%= payment.paymentType %></span>
+                                            <span class="paym-stat"><%= payment.status %></span>
+                                            <a class="btn btn-view" href="/events/<%= eventId %>/payments/<%= payment._id %>/<%= userVendor._id %>">Details</a>
+                                            <a class="btn btn-edit" href="/events/<%= eventId %>/payments/<%= payment._id %>/edit/<%= userVendor._id %>">Edit</a>
+                                            <form class="payment-delete-form" action="/events/<%= eventId %>/payments/<%= payment._id %>?_method=DELETE" method="POST">
+                                                <button class="btn btn-delete" type="submit">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </li>
                             <% }) %>
                         </ul>
-                        <a class="btn" href="/events/<%= eventId %>/payments/new/<%= userVendor._id %>">Add
+                        <a class="btn btn-payment" href="/events/<%= eventId %>/payments/new/<%= userVendor._id %>">Add
                             Payment</a>
                     </section>
                     <% }) %>

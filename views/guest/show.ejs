@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         <%= guest.firstName %>
-            <%= guest.lastName %>
+        <%= guest.lastName %>
     </title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
 </head>
 
 <body>
+    <%- include("../partials/_logo") %>
     <div class="layout">
-        <%- include("../partials/_navbar.ejs") %>
+        <%- include("../partials/_navbar") %>
         <main class="content">
             <section class="guest-show">
                 <h1 class="page-title" id="guest-show-title">Guest Details</h1>
@@ -35,7 +38,7 @@
                     </p>
                     <a href="/guest/<%= guest._id %>/edit" class="btn edit-btn">Edit</a>
                     <form action="/guest/<%= guest._id %>?_method=DELETE" method="POST" class="delete-form">
-                        <button type="submit" class="btn delete-btn">Delete</button>
+                        <button type="submit" class="btn btn-delete">Delete</button>
                     </form>
                 </div>
             </section>

@@ -2,6 +2,9 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
+const path = require("path");
+app.use(express.static(path.join(__dirname, "public")));
+
 
 const mongoose = require("mongoose");
 const methodOverride = require("method-override");
@@ -50,6 +53,7 @@ app.use("/events/:eventId/rsvps", rsvpController);
 app.use("/events", taskController);
 app.use("/vendors", vendorController);
 app.use("/events/:eventId/vendors", userVendorController);
+app.use("/events/:eventId/payments", paymentController);
 app.use(dashboardController);
 
 app.listen(port, () => {

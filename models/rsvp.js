@@ -8,7 +8,7 @@ const rsvpSchema = new mongoose.Schema({
     },
     attending: {
         type: String,
-        enum: ["yes", "no", "pending"],
+        enum: ["confirmed", "declined", "pending"],
         default: "pending",
         required: true
     },

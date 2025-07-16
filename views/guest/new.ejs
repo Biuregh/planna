@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Guest</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
 </head>
 
 <body>
-    <div clss="layout">
-        <%-include("../partials/_navbar") %>
+    <%- include("../partials/_logo") %>
+    <div class="layout">
+        <%- include("../partials/_navbar") %>
         <main class="content">
             <section class="guest-new">
                 <h1 class="page-title" id="guest-new-title">Add New Guest</h1>

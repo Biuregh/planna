@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
 </head>
 
 <body>
+    <%- include("../partials/_logo") %>
     <div class="layout">
         <%- include("../partials/_navbar") %>
         <main class="content">
@@ -16,23 +19,27 @@
                 <a class="btn btn-create" href="/events/new">Create New Event</a>
                 <ul class="event-list">
                     <% events.forEach(event=> { %>
-                        <li class="event-item">
-                            <a class="event-link" href="/events/<%= event._id %>">
-                                <%= event.name %>
-                            </a>
-                            <span class="event-date">
-                                <%= new Date(event.date).toLocaleDateString() %>
-                            </span>
-                            <span class="event-date">
-                                <%= event.location %>
-                            </span>
-                            <a class="btn btn-rsvp" href="/events/<%= event._id %>/rsvps">RSVPs</a>
-                            <a class="btn btn-edit" href="/events/<%= event._id %>/edit">Edit</a>
-                            <form class="event-delete-form" action="/events/<%= event._id %>?_method=DELETE"
-                                method="POST">
-                                <button class="btn btn-delete" type="submit">Delete</button>
-                            </form>
-                        </li>
+                        <olclass="event-item">
+                            <div class="event-main">
+                                <div class="event-meta">
+                                    <span class="event-link">
+                                        <%= event.name %>
+                                    </span>
+                                    <span class="event-date">
+                                        <%= new Date(event.date).toLocaleDateString() %>
+                                    </span>
+                                    <span class="event-locat">
+                                        <%= event.location %>
+                                    </span>
+                                    <a class="btn btn-rsvp" href="/events/<%= event._id %>">Detsils</a>
+                                    <a class="btn btn-edit" href="/events/<%= event._id %>/edit">Edit</a>
+                                    <form class="event-delete-form" action="/events/<%= event._id %>?_method=DELETE"
+                                        method="POST">
+                                        <button class="btn btn-delete" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                            </div>    
+                        </ol>
                     <% }) %>
                 </ul>
             </section>

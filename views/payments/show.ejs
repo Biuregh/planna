@@ -5,9 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Detail</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
 </head>
 
 <body>
+    <%- include("../partials/_logo") %>
     <div class="layout">
         <%- include("../partials/_navbar") %>
         <main class="content">
@@ -33,7 +36,6 @@
                 <p><strong>Notes:</strong>
                     <%= payment.notes %>
                 </p>
-                <a class="btn btn-edit"  href="/events/<%= eventId %>/vendors/<%= userVendorId %>/payments/<%= payment._id %>/edit">Edit</a>
                 <a class="btn btn-back" href="/events/<%= eventId %>/payments">Back to Payments</a>
 
             </section>

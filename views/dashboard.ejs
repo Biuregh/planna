@@ -5,9 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/layout.css" />
 </head>
 
 <body>
+    <%- include("./partials/_logo") %>
     <div class="layout">
         <%- include("./partials/_navbar") %>
         <main class="content">
@@ -18,7 +21,7 @@
                 <% } %>
                 <% dashboardData.forEach(data=> { %>
                     <div class="event-dashboard">
-                        <h2 class="subheading">
+                        <h2 class="subheading-dash">
                             <%= data.event.name %>
                         </h2>
                         <p class="event-info">
@@ -31,6 +34,8 @@
                             <%= data.event.location || "Not specified" %>
                         </p>
                         <h3>RSVP Summary</h3>
+                        <strong> Guests Count</strong>
+                        <%= data.guestCount %>
                         <ul class="dashboard-list">
                             <li>Confirmed: <%= data.rsvpStats.confirmed %>
                             </li>
