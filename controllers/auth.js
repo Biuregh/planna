@@ -36,7 +36,6 @@ router.post('/sign-up', async (req, res) => {
 
     res.redirect('/auth/sign-in');
   } catch (error) {
-    console.log(error);
     res.redirect('/');
   }
 });
@@ -63,7 +62,6 @@ router.post('/sign-in', async (req, res) => {
 
     res.redirect('/dashboard');
   } catch (error) {
-    console.log(error);
     res.redirect('/');
   }
 });

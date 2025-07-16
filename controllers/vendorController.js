@@ -10,7 +10,6 @@ router.get("/", async (req, res) => {
         const vendors = await Vendor.find({});
         res.render("vendors/index.ejs", { vendors });
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error loading vendors");
     }
 });
@@ -26,7 +25,6 @@ router.delete("/:id", async (req, res) => {
         await Vendor.findByIdAndDelete(req.params.id);
         res.redirect("/vendors");
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error deleting vendor");
     }
 });
@@ -37,7 +35,6 @@ router.put("/:id", async (req, res) => {
         await Vendor.findByIdAndUpdate(req.params.id, req.body);
         res.redirect(`/vendors/${req.params.id}`);
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error updating vendor");
     }
 });
@@ -52,7 +49,6 @@ router.post("/", async (req, res) => {
         await Vendor.create(vendorData);
         res.redirect("/vendors");
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error creating vendor");
     }
 });
@@ -64,7 +60,6 @@ router.get("/:id/edit", async (req, res) => {
         if (!vendor) return res.status(404).send("Vendor not found");
         res.render("vendors/edit.ejs", { vendor });
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error loading vendor edit form");
     }
 });
@@ -76,7 +71,6 @@ router.get("/:id", async (req, res) => {
         if (!vendor) return res.status(404).send("Vendor not found");
         res.render("vendors/show.ejs", { vendor });
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error retrieving vendor");
     }
 });

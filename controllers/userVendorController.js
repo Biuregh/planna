@@ -36,7 +36,6 @@ router.delete("/:id", async (req, res) => {
         await UserVendor.findByIdAndDelete(req.params.id);
         res.redirect(`/events/${eventId}`);
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error removing vendor link");
     }
 });
@@ -53,7 +52,6 @@ router.put("/:id", async (req, res) => {
         });
         res.redirect(`/events/${eventId}/vendors`);
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error updating vendor link");
     }
 });
@@ -87,7 +85,6 @@ router.post("/", async (req, res) => {
         await userVendor.save();
         res.redirect(`/events/${eventId}/vendors`);
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error linking vendor to event");
     }
 });
@@ -101,7 +98,6 @@ router.get("/:id/edit", async (req, res) => {
         if (!userVendor) return res.status(404).send("UserVendor not found");
         res.render("userVendors/edit.ejs", { userVendor, eventId, vendors });
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error loading edit form");
     }
 });
@@ -114,7 +110,6 @@ router.get("/:id", async (req, res) => {
         if (!userVendor) return res.status(404).send("UserVendor not found");
         res.render("userVendors/show.ejs", { userVendor, eventId });
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error retrieving vendor link");
     }
 });

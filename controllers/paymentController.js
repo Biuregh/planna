@@ -15,7 +15,6 @@ router.get("/", async (req, res) => {
     
     res.render("payments/index.ejs", { eventId, userVendors, payments });
   } catch (err) {
-    console.error(err);
     res.status(500).send("Error loading payments");
   }
 });
@@ -28,7 +27,6 @@ router.get("/new/:userVendorId", async (req, res) => {
     const vendor = await Vendor.findOne(userVendor.vendorId);
     res.render("payments/new.ejs", { eventId, userVendorId, vendor });
   } catch (err) {
-    console.error(err);
     res.status(500).send("Error showing payment form");
   }
 });
@@ -40,7 +38,6 @@ router.delete("/:paymentId", async (req, res) => {
     await Payment.findByIdAndDelete(paymentId);
     res.redirect(`/events/${eventId}/payments`);
   } catch (err) {
-    console.error(err);
     res.status(500).send("Error deleting payment");
   }
 });
@@ -61,7 +58,6 @@ router.put("/:paymentId", async (req, res) => {
     });
     res.redirect(`/events/${eventId}/payments`);
   } catch (err) {
-    console.error(err);
     res.status(500).send("Error updating payment");
   }
 });
@@ -69,7 +65,6 @@ router.put("/:paymentId", async (req, res) => {
 // Create - post new payment
 router.post("/:vendorId/:userVendorId", async (req, res) => {
   const { eventId, vendorId, userVendorId } = req.params;
-  console.log(req.params)
   const userId = req.session.user?._id;
   try {
     const payment = new Payment({
@@ -89,7 +84,6 @@ router.post("/:vendorId/:userVendorId", async (req, res) => {
     await payment.save();
     res.redirect(`/events/${eventId}/payments/${payment._id}/${userVendorId}`);
   } catch (err) {
-    console.error(err);
   
     res.status(500).send("Error creating payment");
   }
@@ -102,7 +96,6 @@ router.get("/:paymentId/edit/:userVendorId", async (req, res) => {
     const payment = await Payment.findById(paymentId);
     res.render("payments/edit.ejs", { payment, eventId, userVendorId });
   } catch (err) {
-    console.error(err);
     res.status(500).send("Error loading payment edit form");
   }
 });
@@ -113,10 +106,8 @@ router.get("/:paymentId/:userVendorId", async (req, res) => {
   try {
     const payment = await Payment.findById(paymentId);
     const event = await Event.findById(eventId);
-    console.log(req.params)
     res.render("payments/show.ejs", { payment, eventId, userVendorId, event });
   } catch (err) {
-    console.error(err);
     res.status(500).send("Error showing payment");
   }
 });

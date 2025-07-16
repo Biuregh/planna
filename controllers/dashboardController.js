@@ -48,11 +48,9 @@ router.get("/dashboard", async (req, res) => {
                 guestCount
             };
         }));
-        console.log(dashboardData)
         res.render("dashboard.ejs", { user, dashboardData });
 
     } catch (err) {
-        console.error(err);
         res.status(500).send("Dashboard error");
     }
 });

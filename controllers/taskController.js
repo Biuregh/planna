@@ -18,7 +18,6 @@ router.get("/:eventId/tasks", async (req, res) => {
         const tasks = await Task.find({ eventId });
         res.render("task/index.ejs", { event, tasks });
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error loading tasks.");
     }
 });
@@ -30,7 +29,6 @@ router.get("/:eventId/tasks/new", async (req, res) => {
         const vendors = await UserVendor.find({ eventId });
         res.render("task/new.ejs", { eventId, vendors });
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error loading new task form.");
     }
 });
@@ -42,7 +40,6 @@ router.delete("/:eventId/tasks/:taskId", async (req, res) => {
         await Task.findByIdAndDelete(taskId);
         res.redirect(`/events/${eventId}/tasks`);
     } catch (err) {
-        console.error(err);
         res.status(500).send("Failed to delete task.");
     }
 });
@@ -54,7 +51,6 @@ router.put("/:eventId/tasks/:taskId", async (req, res) => {
         await Task.findByIdAndUpdate(taskId, req.body);
         res.redirect(`/events/${eventId}/tasks`);
     } catch (err) {
-        console.error(err);
         res.status(400).send("Failed to update task.");
     }
 });
@@ -71,7 +67,6 @@ router.post("/:eventId/tasks", async (req, res) => {
         await newTask.save();
         res.redirect(`/events/${eventId}/tasks`);
     } catch (err) {
-        console.error(err);
         res.status(400).send("Failed to create task.");
     }
 });
@@ -84,7 +79,6 @@ router.get("/:eventId/tasks/:taskId/edit", async (req, res) => {
         const vendors = await UserVendor.find({ eventId });
         res.render("task/edit.ejs", { eventId, task, vendors });
     } catch (err) {
-        console.error(err);
         res.status(500).send("Error loading task edit form.");
     }
 });
@@ -96,7 +90,6 @@ router.get("/:eventId/tasks/:taskId", async (req, res) => {
         const task = await Task.findById(taskId).populate("vendorId");
         res.render("task/show.ejs", { eventId, task });
     } catch (err) {
-        console.error(err);
         res.status(404).send("Task not found.");
     }
 });

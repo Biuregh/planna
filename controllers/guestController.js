@@ -39,7 +39,6 @@ router.delete("/guest/:id", async (req, res) => {
         }
         res.redirect(`/events/${guest.eventId}/guests`);
     } catch (err) {
-        console.error("============>", err)
         res.status(500).send("Error deleting guest");
     }
 });
@@ -75,7 +74,6 @@ router.post("/events/:eventId/guests", async (req, res) => {
         await Guest.create(guestData);
         res.redirect(`/events/${req.params.eventId}/guests`);
     } catch (err) {
-        console.error("Error creating guest:", err);  // Log error for debugging
         res.status(500).send("Error creating guest");
     }
 });
